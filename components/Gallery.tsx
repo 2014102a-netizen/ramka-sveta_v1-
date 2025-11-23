@@ -65,7 +65,10 @@ const handleProductClick = (productId: string) => {
   console.log(`Выбран товар: ${productId}`);
   // TODO: Добавить роутинг или модальное окно
   // Временно можно добавить alert
-  alert(`Товар "${products.find(p => p.id === productId)?.name}" добавлен в корзину!`);
+  const productName = products.find((p) => p.id === productId)?.name;
+  if (productName) {
+    alert(`Товар "${productName}" добавлен в корзину!`);
+  }
 };
 
 const Gallery: React.FC = () => {
@@ -73,8 +76,8 @@ const Gallery: React.FC = () => {
     <section className="py-24 bg-gradient-to-b from-wood-100 to-white text-wood-900">
       <div className="container mx-auto px-6">
         <div className="text-center mb-16">
-           <h2 className="text-4xl font-serif mb-4">Коллекция Традиций</h2>
-           <p className="text-wood-500 font-sans font-light">Сочетание ремесла и технологий</p>
+          <h2 className="text-4xl font-serif mb-4">Коллекция Традиций</h2>
+          <p className="text-wood-500 font-sans font-light">Сочетание ремесла и технологий</p>
         </div>
 
         <div className="grid md:grid-cols-3 gap-8">
@@ -112,9 +115,7 @@ const Gallery: React.FC = () => {
                 <h3 className="text-2xl font-serif mb-2 group-hover:text-amber-600 transition-colors">{product.name}</h3>
                 <p className="text-sm text-wood-500 font-sans mb-3 line-clamp-2">{product.description}</p>
                 <div className="flex items-center justify-center gap-2">
-                  {product.oldPrice && (
-                    <span className="text-sm text-wood-400 line-through">{product.oldPrice} ₽</span>
-                  )}
+                  {product.oldPrice && <span className="text-sm text-wood-400 line-through">{product.oldPrice} ₽</span>}
                   <p className="font-serif text-xl font-bold text-amber-600">{product.price} ₽</p>
                 </div>
               </div>
