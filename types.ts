@@ -12,10 +12,12 @@ export interface Story {
 export interface Product {
   id: string;
   name: string;
+  archetype: string;
   description: string;
   price: number;
+  oldPrice?: number;
   image: string;
-  style: 'traditional' | 'modern' | 'text';
+  style: 'traditional' | 'text' | 'custom' | 'kids';
   tags: string[];
 }
 
