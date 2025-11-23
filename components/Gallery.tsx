@@ -12,7 +12,6 @@ const products: Product[] = [
     oldPrice: 1299,
     style: 'traditional',
     tags: ['Гжель', 'Традиции', 'Русские узоры'],
-    image: '/images/gzhel.svg'
   },
   {
     id: 'khokhloma',
@@ -23,7 +22,6 @@ const products: Product[] = [
     oldPrice: 1299,
     style: 'traditional',
     tags: ['Хохлома', 'Золото', 'Тепло'],
-    image: '/images/khokhloma.svg'
   },
   {
     id: 'affirmation',
@@ -34,7 +32,6 @@ const products: Product[] = [
     oldPrice: 1199,
     style: 'text',
     tags: ['Аффирмация', 'Мотивация', 'Свет'],
-    image: '/images/affirmation-light.svg'
   },
   {
     id: 'creator',
@@ -45,7 +42,6 @@ const products: Product[] = [
     oldPrice: 1999,
     style: 'custom',
     tags: ['Персонализация', 'На заказ'],
-    image: '/images/custom.svg'
   },
   {
     id: 'kids',
@@ -56,7 +52,6 @@ const products: Product[] = [
     oldPrice: 1599,
     style: 'kids',
     tags: ['Детям', 'Сказка'],
-    image: '/images/kids.svg'
   }
 ];
 
@@ -72,6 +67,16 @@ const handleProductClick = (productId: string) => {
 };
 
 const Gallery: React.FC = () => {
+  const handleProductClick = (productId: string) => {
+    // Переход на страницу товара или открытие модального окна
+    console.log(`Выбран товар: ${productId}`);
+    // Временно показываем уведомление
+    const product = products.find(p => p.id === productId);
+    if (product) {
+      alert(`✨ "${product.name}" готов засиять в вашем доме!\n\n${product.archetype}: ${product.description}\n\nЦена: ${product.price} ₽`);
+    }
+  };
+
   return (
     <section className="py-24 bg-gradient-to-b from-wood-100 to-white text-wood-900">
       <div className="container mx-auto px-6">
@@ -90,37 +95,29 @@ const Gallery: React.FC = () => {
               transition={{ delay: idx * 0.2 }}
               viewport={{ once: true }}
               className="group cursor-pointer"
+              onClick={() => handleProductClick(product.id)}
             >
               <div className="relative aspect-square mb-6 perspective-1000">
                 <div className="absolute inset-0 bg-wood-900 rounded-xl transform rotate-3 opacity-20 group-hover:rotate-6 transition-transform duration-300"></div>
                 <div className="relative w-full h-full bg-white rounded-xl shadow-xl overflow-hidden border-8 border-wood-300">
-                  <div className="absolute inset-0 bg-gradient-to-b from-amber-200/0 to-amber-400/20 opacity-0 group-hover:opacity-100 transition-opacity duration-700 pointer-events-none" />
-
-                  <img
-                    src={product.image}
-                    alt={product.name}
-                    className="w-full h-full object-cover transition-all duration-700 group-hover:scale-110 group-hover:brightness-110"
-                  />
-                  {/* Overlay for interaction */}
-                  <div className="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
-                    <button className="bg-white text-wood-900 px-6 py-3 rounded-full font-sans text-sm font-semibold tracking-wide transform translate-y-4 group-hover:translate-y-0 transition-transform duration-300">
-                      Зажечь свет
                     </button>
                   </div>
                 </div>
               </div>
 
               <div className="text-center">
-                <p className="text-xs uppercase tracking-wider text-amber-600 mb-1">{product.archetype}</p>
-                <h3 className="text-2xl font-serif mb-2 group-hover:text-amber-600 transition-colors">{product.name}</h3>
-                <p className="text-sm text-wood-500 font-sans mb-3 line-clamp-2">{product.description}</p>
-                <div className="flex items-center justify-center gap-2">
-                  {product.oldPrice && <span className="text-sm text-wood-400 line-through">{product.oldPrice} ₽</span>}
-                  <p className="font-serif text-xl font-bold text-amber-600">{product.price} ₽</p>
                 </div>
               </div>
             </motion.div>
           ))}
+        </div>
+        
+        {/* Дополнительный CTA */}
+        <div className="text-center mt-16">
+          <p className="text-wood-500 mb-4">Не нашли свою историю?</p>
+          <button className="bg-amber-600 text-white px-8 py-3 rounded-full hover:bg-amber-700 transition-colors font-sans font-semibold">
+            Создать уникальный дизайн →
+          </button>
         </div>
       </div>
     </section>
