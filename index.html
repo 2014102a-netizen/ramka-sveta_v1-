@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="ru">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>РАМКА СВЕТА | В каждом доме должен быть свой маяк</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;0,700;1,400&family=Montserrat:wght@200;300;400;500;600&display=swap" rel="stylesheet">
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            fontFamily: {
+              serif: ['"Cormorant Garamond"', 'serif'],
+              sans: ['"Montserrat"', 'sans-serif'],
+            },
+            colors: {
+              wood: {
+                100: '#F5E6D3',
+                300: '#E6C9A8',
+                500: '#C19A6B',
+                700: '#8B5A2B',
+                900: '#5C3A1E',
+              },
+              amber: {
+                glow: '#FFBF00',
+              },
+              night: '#0F172A',
+            },
+            boxShadow: {
+              'glow': '0 0 40px -10px rgba(255, 191, 0, 0.5)',
+              'inner-light': 'inset 0 0 50px rgba(255, 200, 100, 0.2)',
+            }
+          }
+        }
+      }
+    </script>
+    <style>
+      body {
+        scroll-behavior: smooth;
+      }
+      .old-slavic {
+        font-family: 'Times New Roman', serif;
+        letter-spacing: 0.05em;
+        text-transform: uppercase;
+      }
+    </style>
+  <script type="importmap">
+{
+  "imports": {
+    "react/": "https://aistudiocdn.com/react@^19.2.0/",
+    "react": "https://aistudiocdn.com/react@^19.2.0",
+    "react-dom/": "https://aistudiocdn.com/react-dom@^19.2.0/",
+    "lucide-react": "https://aistudiocdn.com/lucide-react@^0.554.0",
+    "framer-motion": "https://aistudiocdn.com/framer-motion@^12.23.24"
+  }
+}
+</script>
+</head>
+  <body class="bg-black text-white antialiased">
+    <div id="root"></div>
+  </body>
+</html>
