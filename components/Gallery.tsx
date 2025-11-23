@@ -5,32 +5,68 @@ import { Product } from '../types';
 const products: Product[] = [
   {
     id: 'gzhel',
-    name: 'Зимняя Сказка',
-    description: 'Гжельские мотивы в современном исполнении. Холодные тона узора согреваются теплым светом.',
-    price: 4500,
+    name: 'Гжель',
+    archetype: 'Хранитель традиций',
+    description: 'Традиционная русская роспись. Сине-белые узоры создают атмосферу домашнего уюта.',
+    price: 899,
+    oldPrice: 1299,
     style: 'traditional',
-    tags: ['Гжель', 'Традиции'],
-    image: 'https://picsum.photos/id/164/600/600' // Placeholder resembling blue/white
+    tags: ['Гжель', 'Традиции', 'Русские узоры'],
+    image: '/images/gzhel.svg'
   },
   {
     id: 'khokhloma',
-    name: 'Жар-Птица',
-    description: 'Золотая Хохлома. Яркие, страстные цвета для акцента в интерьере гостиной.',
-    price: 4900,
+    name: 'Хохлома',
+    archetype: 'Хранитель огня',
+    description: 'Золотые и красные узоры на тёплом фоне. Яркий акцент для любого интерьера.',
+    price: 899,
+    oldPrice: 1299,
     style: 'traditional',
-    tags: ['Хохлома', 'Золото'],
-    image: 'https://picsum.photos/id/129/600/600' // Placeholder resembling warm tones
+    tags: ['Хохлома', 'Золото', 'Тепло'],
+    image: '/images/khokhloma.svg'
   },
   {
     id: 'affirmation',
     name: 'Свет во мне',
-    description: 'Минималистичная рамка с мощной аффирмацией. Идеально для утренней медитации.',
-    price: 3800,
+    archetype: 'Мудрец',
+    description: 'Минималистичная рамка с мощной аффирмацией для ежедневной мотивации.',
+    price: 899,
+    oldPrice: 1199,
     style: 'text',
-    tags: ['Аффирмация', 'Минимализм'],
-    image: 'https://picsum.photos/id/366/600/600'
+    tags: ['Аффирмация', 'Мотивация', 'Свет'],
+    image: '/images/affirmation-light.svg'
+  },
+  {
+    id: 'creator',
+    name: 'Ваш дизайн',
+    archetype: 'Творец',
+    description: 'Создайте уникальный светильник с любой надписью или изображением.',
+    price: 1599,
+    oldPrice: 1999,
+    style: 'custom',
+    tags: ['Персонализация', 'На заказ'],
+    image: '/images/custom.svg'
+  },
+  {
+    id: 'kids',
+    name: 'Сказочный мир',
+    archetype: 'Волшебник',
+    description: 'Детские мотивы для сладких снов. Единороги, космос, феи.',
+    price: 1299,
+    oldPrice: 1599,
+    style: 'kids',
+    tags: ['Детям', 'Сказка'],
+    image: '/images/kids.svg'
   }
 ];
+
+const handleProductClick = (productId: string) => {
+  // Переход на страницу товара или открытие модального окна
+  console.log(`Выбран товар: ${productId}`);
+  // TODO: Добавить роутинг или модальное окно
+  // Временно можно добавить alert
+  alert(`Товар "${products.find(p => p.id === productId)?.name}" добавлен в корзину!`);
+};
 
 const Gallery: React.FC = () => {
   return (
@@ -45,6 +81,7 @@ const Gallery: React.FC = () => {
           {products.map((product, idx) => (
             <motion.div
               key={product.id}
+              onClick={() => handleProductClick(product.id)}
               initial={{ opacity: 0, y: 50 }}
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ delay: idx * 0.2 }}
@@ -54,24 +91,32 @@ const Gallery: React.FC = () => {
               <div className="relative aspect-square mb-6 perspective-1000">
                 <div className="absolute inset-0 bg-wood-900 rounded-xl transform rotate-3 opacity-20 group-hover:rotate-6 transition-transform duration-300"></div>
                 <div className="relative w-full h-full bg-white rounded-xl shadow-xl overflow-hidden border-8 border-wood-300">
-                  <img 
-                    src={product.image} 
+                  <div className="absolute inset-0 bg-gradient-to-b from-amber-200/0 to-amber-400/20 opacity-0 group-hover:opacity-100 transition-opacity duration-700 pointer-events-none" />
+
+                  <img
+                    src={product.image}
                     alt={product.name}
-                    className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
+                    className="w-full h-full object-cover transition-all duration-700 group-hover:scale-110 group-hover:brightness-110"
                   />
                   {/* Overlay for interaction */}
                   <div className="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
                     <button className="bg-white text-wood-900 px-6 py-3 rounded-full font-sans text-sm font-semibold tracking-wide transform translate-y-4 group-hover:translate-y-0 transition-transform duration-300">
-                      Подробнее
+                      Зажечь свет
                     </button>
                   </div>
                 </div>
               </div>
-              
+
               <div className="text-center">
+                <p className="text-xs uppercase tracking-wider text-amber-600 mb-1">{product.archetype}</p>
                 <h3 className="text-2xl font-serif mb-2 group-hover:text-amber-600 transition-colors">{product.name}</h3>
                 <p className="text-sm text-wood-500 font-sans mb-3 line-clamp-2">{product.description}</p>
-                <p className="font-serif text-xl font-bold">{product.price} ₽</p>
+                <div className="flex items-center justify-center gap-2">
+                  {product.oldPrice && (
+                    <span className="text-sm text-wood-400 line-through">{product.oldPrice} ₽</span>
+                  )}
+                  <p className="font-serif text-xl font-bold text-amber-600">{product.price} ₽</p>
+                </div>
               </div>
             </motion.div>
           ))}
