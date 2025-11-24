@@ -9,7 +9,7 @@ const stories = [
     author: "Мария",
     role: "мама троих детей",
     before: "Младший сын боялся спать один. Каждую ночь приходил к нам в комнату.",
-    solution: "Поставили ночник с космонавтом и звёздами. Вместе придумали историю, что космонавт охраняет его сны.",
+    solution: "Поставили ночник с космонавтом. Вместе придумали историю, что космонавт охраняет его сны.",
     after: "Теперь сам бежит в кровать! Засыпает за 10 минут."
   },
   {
@@ -41,7 +41,7 @@ const Stories: React.FC = () => {
   return (
     <section className="py-24 bg-gradient-to-b from-wood-100 to-white text-wood-900">
       <div className="container mx-auto px-6">
-        <motion.div 
+        <motion.div
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8 }}
@@ -49,9 +49,7 @@ const Stories: React.FC = () => {
           className="text-center mb-16"
         >
           <h2 className="text-4xl md:text-5xl font-serif mb-4">Истории, которые светятся</h2>
-          <p className="text-wood-500 font-sans font-light text-lg">
-            Каждая рамка — это начало новой истории.
-          </p>
+          <p className="text-wood-500 font-sans font-light text-lg">Каждая рамка — это начало новой истории.</p>
         </motion.div>
 
         <div className="max-w-4xl mx-auto">
@@ -65,15 +63,11 @@ const Stories: React.FC = () => {
             >
               <div className="bg-white rounded-3xl shadow-xl p-8 md:p-12 mb-8 relative">
                 <Quote className="absolute top-8 left-8 text-amber-200" size={48} />
-                
                 <div className="text-center mb-8 pt-8">
-                  <h3 className="text-2xl md:text-3xl font-serif text-wood-900 italic mb-4">
-                    "{story.quote}"
-                  </h3>
+                  <h3 className="text-2xl md:text-3xl font-serif text-wood-900 italic mb-4">"{story.quote}"</h3>
                   <p className="font-serif font-medium text-wood-900">{story.author}</p>
                   <p className="text-sm text-wood-500">{story.role}</p>
                 </div>
-
                 <div className="grid md:grid-cols-3 gap-6 mt-8">
                   <div className="bg-wood-50 rounded-2xl p-6">
                     <span className="inline-block bg-wood-200 text-wood-700 text-xs font-medium px-3 py-1 rounded-full mb-3">Было</span>
