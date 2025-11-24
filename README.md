@@ -1,20 +1,22 @@
-<div align="center">
-<img width="1200" height="475" alt="GHBanner" src="https://github.com/user-attachments/assets/0aa67016-6eaf-458a-adb2-6e31a0763ed6" />
-</div>
+# РАМКА СВЕТА
 
-# Run and deploy your AI Studio app
+Персонализированные ночники с русской душой. Один ночник — тысяча историй.
 
-This contains everything you need to run your app locally.
+## Философия
 
-View your app in AI Studio: https://ai.studio/apps/drive/1Fj4XkOG9QMB5KR6HogjY5769fzcsOcMU
+Этот сайт — не просто каталог. Это:
 
-## Run Locally
+- История о том, как свет может изменить пространство и настроение
+- Путешествие, где пользователь становится героем
+- Эмоциональная связь вместо сухих характеристик
 
-**Prerequisites:**  Node.js
+**Люди не покупают ночники. Они покупают истории, в которых видят себя. Какая твоя?**
 
+## Технологии
 
-1. Install dependencies:
-   `npm install`
-2. Set the `GEMINI_API_KEY` in [.env.local](.env.local) to your Gemini API key
-3. Run the app:
-   `npm run dev`
+React • Tailwind CSS • Framer Motion • Vite
+
+## Автор
+
+Света | РАМКА СВЕТА
+

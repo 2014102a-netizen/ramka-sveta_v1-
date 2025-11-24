@@ -71,6 +71,20 @@ const Gallery: React.FC = () => {
             </article>
           ))}
         </div>
+
+        {/* Custom CTA */}
+        <motion.div 
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ delay: 0.6 }}
+          viewport={{ once: true }}
+          className="text-center mt-16"
+        >
+          <p className="text-wood-500 font-sans mb-4">Не нашли свою историю?</p>
+          <button className="bg-amber-500 hover:bg-amber-400 text-wood-900 px-8 py-4 rounded-full font-sans font-semibold transition-colors inline-flex items-center gap-2">
+            Создать уникальный дизайн →
+          </button>
+        </motion.div>
       </div>
     </section>
   );
