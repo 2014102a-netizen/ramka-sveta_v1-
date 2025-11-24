@@ -1,180 +1,74 @@
 import React from 'react';
-import { motion } from 'framer-motion';
-import { Sparkles } from 'lucide-react';
 
-interface Product {
+interface GalleryItem {
   id: string;
-  name: string;
-  archetype: string;
-  archetypeSlogan: string;
-  description: string;
-  suitableFor: string[];
-  price: number;
-  oldPrice: number;
-  tags: string[];
+  title: string;
+  subtitle: string;
   image: string;
+  tone: 'cool' | 'warm';
 }
 
-const products: Product[] = [
+const galleryItems: GalleryItem[] = [
   {
     id: 'gzhel',
-    name: 'Гжель',
-    archetype: 'ХРАНИТЕЛЬ ТРАДИЦИЙ',
-    archetypeSlogan: 'Связь поколений через свет',
-    description: 'Традиционная русская роспись. Сине-белые узоры создают атмосферу спокойствия и глубины.',
-    suitableFor: ['Спальня', 'Медитация', 'Подарок бабушке'],
-    price: 899,
-    oldPrice: 1299,
-    tags: ['Гжель', 'Традиции'],
-    image: 'https://picsum.photos/id/164/600/600'
+    title: 'Гжель',
+    subtitle: 'Холодный синий свет, который успокаивает перед сном.',
+    image: '/images/gzhel.svg',
+    tone: 'cool',
   },
   {
     id: 'khokhloma',
-    name: 'Хохлома',
-    archetype: 'ХРАНИТЕЛЬ ОГНЯ',
-    archetypeSlogan: 'Праздник, который всегда с тобой',
-    description: 'Золотые и красные узоры на тёплом фоне. Яркий акцент для любого интерьера.',
-    suitableFor: ['Гостиная', 'Столовая', 'Праздничный подарок'],
-    price: 899,
-    oldPrice: 1299,
-    tags: ['Хохлома', 'Золото'],
-    image: 'https://picsum.photos/id/129/600/600'
+    title: 'Хохлома',
+    subtitle: 'Тёплый золотой орнамент, который создаёт ощущение домашнего огня.',
+    image: '/images/khokhloma.svg',
+    tone: 'warm',
   },
-  {
-    id: 'affirmation',
-    name: 'Свет во мне',
-    archetype: 'МУДРЕЦ',
-    archetypeSlogan: 'Слова, которые исцеляют',
-    description: 'Минималистичная рамка с мощной аффирмацией для ежедневной практики осознанности.',
-    suitableFor: ['Рабочий стол', 'Медитация', 'Подарок себе'],
-    price: 899,
-    oldPrice: 1199,
-    tags: ['Аффирмация', 'Мотивация'],
-    image: 'https://picsum.photos/id/366/600/600'
-  },
-  {
-    id: 'custom',
-    name: 'Ваш дизайн',
-    archetype: 'ТВОРЕЦ',
-    archetypeSlogan: 'Ваша история в рамке',
-    description: 'Создайте уникальный светильник с любой картинкой, фото или логотипом.',
-    suitableFor: ['Детская', 'Офис', 'Корпоративный подарок'],
-    price: 1599,
-    oldPrice: 1999,
-    tags: ['Персонализация', 'На заказ'],
-    image: 'https://picsum.photos/id/250/600/600'
-  },
-  {
-    id: 'kids',
-    name: 'Сказочный мир',
-    archetype: 'ВОЛШЕБНИК',
-    archetypeSlogan: 'Превращаем страх в сказку',
-    description: 'Детские мотивы для сладких снов. Единороги, космонавты, динозавры — герои, которые охраняют сон.',
-    suitableFor: ['Детская', 'Подарок ребёнку', 'Против страха темноты'],
-    price: 1299,
-    oldPrice: 1599,
-    tags: ['Детям', 'Сказка'],
-    image: 'https://picsum.photos/id/1062/600/600'
-  },
-  {
-    id: 'minimal',
-    name: 'Чистый свет',
-    archetype: 'ФИЛОСОФ',
-    archetypeSlogan: 'Свет без лишнего',
-    description: 'Чистые линии и спокойные цвета для современного интерьера. Минимализм в его лучшем проявлении.',
-    suitableFor: ['Лофт', 'Кабинет', 'Скандинавский интерьер'],
-    price: 799,
-    oldPrice: 1099,
-    tags: ['Минимализм', 'Современный'],
-    image: 'https://picsum.photos/id/1047/600/600'
-  }
 ];
 
 const Gallery: React.FC = () => {
   return (
-    <section className="py-24 bg-gradient-to-b from-wood-100 to-white text-wood-900">
-      <div className="container mx-auto px-6">
-        <motion.div 
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8 }}
-          viewport={{ once: true }}
-          className="text-center mb-16"
-        >
-          <h2 className="text-4xl md:text-5xl font-serif mb-4">Коллекция Традиций</h2>
-          <p className="text-wood-500 font-sans font-light text-lg">Сочетание ремесла и технологий</p>
-        </motion.div>
+    <section className="bg-white text-wood-900 py-20" id="gallery">
+      <div className="container mx-auto px-6 space-y-12">
+        <div className="text-center space-y-4">
+          <p className="text-sm uppercase tracking-[0.3em] text-amber-600">Коллекция ночников</p>
+          <h2 className="text-4xl md:text-5xl font-serif">Тепло традиций в каждом кадре</h2>
+          <p className="text-wood-500 max-w-2xl mx-auto font-sans">
+            Два настроения, две истории: спокойная Гжель и огненная Хохлома. Выберите тот свет, который ближе к вашему дому.
+          </p>
+        </div>
 
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {products.map((product, idx) => (
-            <motion.div
-              key={product.id}
-              initial={{ opacity: 0, y: 50 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ delay: idx * 0.1, duration: 0.6 }}
-              viewport={{ once: true }}
-              className="group"
+        <div className="grid gap-8 md:grid-cols-2">
+          {galleryItems.map((item) => (
+            <article
+              key={item.id}
+              className="group overflow-hidden rounded-2xl shadow-2xl border border-wood-100 bg-white flex flex-col"
             >
-              <div className="bg-white rounded-2xl shadow-lg overflow-hidden hover:shadow-2xl transition-shadow duration-300">
-                {/* Image */}
-                <div className="relative aspect-square overflow-hidden">
-                  <div className="absolute inset-0 bg-wood-900 transform rotate-2 scale-95 rounded-xl opacity-10"></div>
-                  <div className="relative w-full h-full p-4">
-                    <div className="w-full h-full bg-white rounded-xl border-8 border-wood-200 overflow-hidden">
-                      <img 
-                        src={product.image} 
-                        alt={product.name}
-                        className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
-                      />
-                    </div>
-                  </div>
-                  
-                  {/* Hover overlay */}
-                  <div className="absolute inset-0 bg-black/50 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center p-4">
-                    <button className="bg-amber-500 hover:bg-amber-400 text-wood-900 px-6 py-3 rounded-full font-sans font-semibold text-sm flex items-center gap-2 transform translate-y-4 group-hover:translate-y-0 transition-all duration-300">
-                      <Sparkles size={16} />
-                      Зажечь свет
-                    </button>
-                  </div>
-                </div>
+              <div className="relative overflow-hidden">
+                <div
+                  className={`absolute inset-0 transition-opacity duration-700 pointer-events-none bg-gradient-to-b ${
+                    item.tone === 'cool'
+                      ? 'from-sky-200/0 via-sky-200/20 to-amber-200/30'
+                      : 'from-amber-200/0 via-amber-200/10 to-amber-400/40'
+                  } opacity-0 group-hover:opacity-100`}
+                />
+                <img
+                  src={item.image}
+                  alt={item.title}
+                  className="w-full h-72 object-cover transition-transform duration-700 group-hover:scale-105"
+                  loading="lazy"
+                />
+              </div>
 
-                {/* Content */}
-                <div className="p-6">
-                  {/* Archetype */}
-                  <p className="text-xs font-sans tracking-widest text-amber-600 mb-1">
-                    {product.archetype}
-                  </p>
-                  
-                  {/* Name */}
-                  <h3 className="text-2xl font-serif mb-2 group-hover:text-amber-600 transition-colors">
-                    {product.name}
-                  </h3>
-                  
-                  {/* Description */}
-                  <p className="text-sm text-wood-500 font-sans mb-4 line-clamp-2">
-                    {product.description}
-                  </p>
-                  
-                  {/* Price */}
-                  <div className="flex items-center gap-3 mb-4">
-                    <span className="text-wood-400 line-through text-sm">{product.oldPrice} ₽</span>
-                    <span className="text-2xl font-serif font-bold text-amber-600">{product.price} ₽</span>
-                  </div>
-                  
-                  {/* Tags */}
-                  <div className="flex flex-wrap gap-2">
-                    {product.tags.map((tag) => (
-                      <span 
-                        key={tag}
-                        className="text-xs bg-wood-100 text-wood-600 px-3 py-1 rounded-full font-sans"
-                      >
-                        {tag}
-                      </span>
-                    ))}
-                  </div>
+              <div className="p-8 space-y-3 flex-1 flex flex-col">
+                <h3 className="text-2xl font-serif">{item.title}</h3>
+                <p className="text-wood-600 font-sans leading-relaxed">{item.subtitle}</p>
+                <div className="mt-auto pt-4 flex items-center gap-3 text-sm uppercase tracking-[0.2em] text-amber-700">
+                  <span className="h-px flex-1 bg-amber-200" aria-hidden />
+                  <span>Смотреть свет</span>
+                  <span className="h-px flex-1 bg-amber-200" aria-hidden />
                 </div>
               </div>
-            </motion.div>
+            </article>
           ))}
         </div>
 

@@ -16,7 +16,7 @@ const Footer: React.FC = () => {
         </div>
 
         <div className="text-center md:text-right text-sm text-white/30">
-          <p>&copy; 2024 Ramka Sveta.</p>
+          <p>&copy; 2025 РАМКА СВЕТА.</p>
           <p>Made with light & love.</p>
         </div>
       </div>
