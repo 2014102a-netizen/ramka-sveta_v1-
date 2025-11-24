@@ -140,15 +140,3 @@ const Stories: React.FC = () => {
             
             <button 
               onClick={next}
-              className="w-12 h-12 rounded-full bg-wood-100 hover:bg-wood-200 flex items-center justify-center transition-colors"
-            >
-              <ChevronRight className="text-wood-600" size={24} />
-            </button>
-          </div>
-        </div>
-      </div>
-    </section>
-  );
-};
-
-export default Stories;
