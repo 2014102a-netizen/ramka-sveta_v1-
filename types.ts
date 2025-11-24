@@ -13,10 +13,7 @@ export interface Product {
   id: string;
   name: string;
   description: string;
-  price: number;
   image: string;
-  style: 'traditional' | 'modern' | 'text';
-  tags: string[];
 }
 
 export interface Question {
