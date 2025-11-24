@@ -1,3 +1,4 @@
+import './index.css';
 import React, { useEffect, useState } from 'react';
 import Hero from './components/Hero';
 import PainPoints from './components/PainPoints';
