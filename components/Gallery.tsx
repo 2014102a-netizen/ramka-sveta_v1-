@@ -14,14 +14,14 @@ const galleryItems: GalleryItem[] = [
     id: 'gzhel',
     title: 'Гжель',
     subtitle: 'Холодный синий свет, который успокаивает перед сном.',
-    image: '/images/gzhel.svg',
+    image: '/images/gzhel.jpeg',
     tone: 'cool',
   },
   {
     id: 'khokhloma',
     title: 'Хохлома',
     subtitle: 'Тёплый золотой орнамент, который создаёт ощущение домашнего огня.',
-    image: '/images/khokhloma.svg',
+    image: '/images/khokhloma.jpeg',
     tone: 'warm',
   },
 ];
