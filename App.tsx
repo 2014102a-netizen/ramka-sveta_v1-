@@ -1,7 +1,10 @@
 import React, { useEffect, useState } from 'react';
 import Hero from './components/Hero';
+import PainPoints from './components/PainPoints';
 import Affirmations from './components/Affirmations';
+import Stories from './components/Stories';
 import Gallery from './components/Gallery';
+import FounderQuote from './components/FounderQuote';
 import Quiz from './components/Quiz';
 import Footer from './components/Footer';
 import { motion, useScroll, useSpring } from 'framer-motion';
@@ -29,8 +32,11 @@ const App: React.FC = () => {
       />
 
       <Hero />
+      <PainPoints />
       <Affirmations />
+      <Stories />
       <Gallery />
+      <FounderQuote />
       <Quiz />
       <Footer />
     </main>
